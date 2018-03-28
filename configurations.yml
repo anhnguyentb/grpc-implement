@@ -1,0 +1,7 @@
+server:
+  port: ":50051"
+database:
+  host: "localhost:5432"
+  username: "postgres"
+  password: "Anhnguyen123"
+  name: "logging_grpc"

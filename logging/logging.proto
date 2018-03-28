@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.implements.logging";
+option java_outer_classname = "LoggingProto";
+
+package logging;
+
+//Logging service definition
+service Logging {
+    rpc Create (LoggingRequest) returns (LoggingResponse) {}
+    rpc Fetch (QueryRequest) returns (QueryResponse) {}
+}
+
+message AuditRecord {
+    string client_ip = 1;
+    string server_ip = 2;
+    repeated string tags = 3;
+    string message = 4;
+}
+
+message LoggingRequest {
+    string client_ip = 1;
+    string server_ip = 2;
+    repeated string tags = 3;
+    string message = 4;
+}
+
+message LoggingData {
+    string client_ip = 1;
+    string server_ip = 2;
+    repeated string tags = 3;
+    string message = 4;
+}
+
+message LoggingResponse {
+    bool status = 1;
+    string message = 2;
+    repeated string errors = 3;
+}
+
+message QueryRequest {
+    string client_ip = 1;
+    string server_ip = 2;
+    repeated string tags = 3;
+}
+
+message QueryResponse {
+    bool status = 1;
+    repeated string errors = 2;
+    repeated AuditRecord results = 3;
+}
